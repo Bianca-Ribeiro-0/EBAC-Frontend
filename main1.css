@@ -5,9 +5,6 @@
     font-family: sans-serif;
 }
 
-body {
-}
-
 .container {
     margin: 80px auto;
     max-width: 640px;
@@ -27,7 +24,7 @@ input, textarea, button {
 }
 
 button {
-    background-color: #2ecc71;
+    background-color: #019687;
     border: none;
     text-transform: uppercase;
     color: #fff;
@@ -36,17 +33,15 @@ button {
     font-style: italic;
     cursor: pointer;
 }
-.error{
-padding: 8px;
-background-color: red;
-color: #fff;
-font-size: 12px;
-margin-bottom: 8px;
-display: none;
-}
 
 button:hover {
-    background-color: #27ae60;
+    background-color: #4fbfd3;
+}
+
+.erro{
+    color: red;
+    border-color: red;
+    outline-color: red;
 }
 
 .sucess {
@@ -56,8 +51,17 @@ button:hover {
     display: none;
 }
 
-input.erro {
-    color: red;
-    border-color: red;
-    outline-color: red;
-}
+.error{
+    padding: 8px;
+    background-color: red;
+    color: #fff;
+    font-size: 12px;
+    margin-bottom: 8px;
+    display: none;
+    }
+
+    input.erro {
+        color: red;
+        border-color: red;
+        outline-color: red;
+    }
