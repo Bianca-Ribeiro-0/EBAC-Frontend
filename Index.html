@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JQuery</title>
+    <title>Tarefas</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
@@ -12,53 +12,18 @@
 </head>
 <body>
     <header>
-        <h1>Galeria de fotos</h1>
-        <button type="button">Nova imagem +</button>
+        <h1>Lista de tarefas</h1>
     </header>
 
     <form>
-        <h2>Inserir nova imagem</h2>
-        <input type="url" id="img-nova" required placeholder="URL da imagem"/>
+        <input type="text" id="nova-tarefa" required placeholder="Nova tarefa"/>
         <button type="submit"> Adicionar </button>
-        <button type="reset" id="botao-cancelar"> Cancelar </button>
     </form>
 
-    <ul>
-        <li>
-            <img src="img/images/foto1.jpg" alt="pintura de um gato" />
-            <div class="overlay-img-link">
-                <a href="img/images/foto1.jpg" title="Ver imagem em tamanho real" target="_blank">
-                    Ver imagem em tamanho real
-                </a>
-            </div>
-        </li>
-    </ul>
+    <ol>
+       <li> </li>
+    </ol>
 
-
-    
-    <ul>
-        <li>
-            <img src="img/images/foto2.jpg" alt="pintura de um gato" />
-            <div class="overlay-img-link">
-                <a href="img/images/foto2.jpg" title="Ver imagem em tamanho real" target="_blank">
-                    Ver imagem em tamanho real
-                </a>
-            </div>
-        </li>
-    </ul>
-
-
-    
-    <ul>
-        <li>
-            <img src="img/images/foto3.jpg" alt="pintura de um gato" />
-             <div class="overlay-img-link">
-                <a href="img/images/foto3.jpg" title="Ver imagem em tamanho real" target="_blank">
-                    Ver imagem em tamanho real
-                </a>
-            </div>
-        </li>
-    </ul>
 
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script src="main.js"></script>

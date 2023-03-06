@@ -1,30 +1,17 @@
-$(document).ready(function(){ /* Aqui começamos com a jquery */
-    $('header button').click(function(){ /* chamamos o header button e fazemos uma função, cada vez que clica neste botão ele rola pra baixo */
-        $('form').slideDown();
-    })
-
-     $('#botao-cancelar').click(function(){ 
-        $('form').slideUp();
-     })
-
+$(document).ready(function(){ /* Aqui começamos o Jquery */
+ 
     $('form').on('submit', function (e){
         e.preventDefault();
-        const endNovaImg = $('#img-nova').val();
-        const novoItem = $('<li style="display=none"></li>');
+        const novaTaf = $('#nova-tarefa').val(); /* é feito uma const referenciando o ID no HTML campo input */
+        const novoItem = $('<li></li>'); /* é feito mais uma const referenciando a lista no html  */
 
-        $(`<img src="${endNovaImg}" />`).appendTo(novoItem);
-        $(`
-        <div class="overlay-img-link"> 
-             <a href="${endNovaImg}" target="_blank" title="Ver imagem em tamanho real"
-                 Ver imagem em tamanho real
-             </a>
-        </div>
-        `).appendTo(novoItem);
+        novoItem.append(novaTaf); /* a const NovoItem faz um append para novaTaf, pois é ele que recebe o usuário */
+        $('ol').append(novoItem); /* o ol no html faz um append para o novoItem */
 
-        $(novoItem).appendTo('ul');
-        $(novoItem).fadeIn(5000);
-        $('#img-nova').val('');
-
+        $('#nova-tarefa').val(''); 
+    
+        $('ol').on('click', 'li', function() {
+            $(this).toggleClass('riscado');      /* é feita uma função. No ol, quando clicamos vai chamar o ToggleClass('riscado'), o qual sua definição foi feita no css*/
+          });          
     })  
-
 })
