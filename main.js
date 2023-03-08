@@ -1,14 +1,18 @@
 $(document).ready(function(){
-    $('#carrossel-imgs').slick({
-        autoplay: true,
-    });
-    $('.menu-hamburger').click(function(){
-        $('nav').slideToggle();
-    })
-    
+
     $('#telefone').mask('(00)0000-00000', {
         placeholder: '(00)0000-00000'
     });
+
+    $('#CPF').mask('000000000-00',{
+        placeholder:'000000000-00'
+    });
+
+    $('#CEP').mask('00000-000',{
+        placeholder:'00000-000'
+    });
+
+
 
     $('form').validate({
         rules: {
@@ -22,15 +26,15 @@ $(document).ready(function(){
             telefone: {
                 required: true
             },
-            mensagem: {
+            CPF: {
                 required: true
             },
-            veiculoInteresse:{
-                required: false
+            enderecoCompleto:{
+                required: true
+            },
+            CEP:{
+                required: true
             }
-        },
-        messages:{
-            nome: "Por favor, insira o seu nome"
         },
 
         submitHandler: function(form){
@@ -44,15 +48,4 @@ $(document).ready(function(){
         }
     })
 
-    $('.lista-veiculos button').click(function(){
-        const destino = $('#contato');
-
-        const nomeVeiculo = $(this).parent().find('h3').text();
-
-        $('#veiculo-interesse').val(nomeVeiculo);
-
-        $('html').animate({
-            scrollTop: destino.offset().top
-        }, 1000) 
-    })
 })
