@@ -1,17 +1,58 @@
-$(document).ready(function(){ /* Aqui começamos o Jquery */
- 
-    $('form').on('submit', function (e){
-        e.preventDefault();
-        const novaTaf = $('#nova-tarefa').val(); /* é feito uma const referenciando o ID no HTML campo input */
-        const novoItem = $('<li></li>'); /* é feito mais uma const referenciando a lista no html  */
-
-        novoItem.append(novaTaf); /* a const NovoItem faz um append para novaTaf, pois é ele que recebe o usuário */
-        $('ol').append(novoItem); /* o ol no html faz um append para o novoItem */
-
-        $('#nova-tarefa').val(''); 
+$(document).ready(function(){
+    $('#carrossel-imgs').slick({
+        autoplay: true,
+    });
+    $('.menu-hamburger').click(function(){
+        $('nav').slideToggle();
+    })
     
-        $('ol').on('click', 'li', function() {
-            $(this).toggleClass('riscado');      /* é feita uma função. No ol, quando clicamos vai chamar o ToggleClass('riscado'), o qual sua definição foi feita no css*/
-          });          
-    })  
+    $('#telefone').mask('(00)0000-00000', {
+        placeholder: '(00)0000-00000'
+    });
+
+    $('form').validate({
+        rules: {
+            nome: {
+                required: true,
+            },
+            email: {
+                required: true,
+                email: true
+            },
+            telefone: {
+                required: true
+            },
+            mensagem: {
+                required: true
+            },
+            veiculoInteresse:{
+                required: false
+            }
+        },
+        messages:{
+            nome: "Por favor, insira o seu nome"
+        },
+
+        submitHandler: function(form){
+            console.log(form)
+        },
+        invalidHandler: function(evento, validador){
+            let camposIncorretos = validador.numberOfInvalids();
+            if (camposIncorretos){
+                alert("Existem ${camposIncorretos} camposIncorretos")
+            }
+        }
+    })
+
+    $('.lista-veiculos button').click(function(){
+        const destino = $('#contato');
+
+        const nomeVeiculo = $(this).parent().find('h3').text();
+
+        $('#veiculo-interesse').val(nomeVeiculo);
+
+        $('html').animate({
+            scrollTop: destino.offset().top
+        }, 1000) 
+    })
 })
