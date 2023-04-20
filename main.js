@@ -30,14 +30,7 @@ form.addEventListener('submit', function (e){
             nomeBeneficiario.style.border = '1px solid red';
             document.querySelector('.error').style.display = 'block'; // se estiver inválido ele vai se personalizar
         }
-  
-  
-  
-    /* if(!validarNome(nomeBeneficiario.value)){ // chamamos a função validar nome dnv, e vemos se o nome está correto
-        alert("Nome incompleto");
-    } else{
-        alert ("ok!");
-    }*/
+
 })
 
 nomeBeneficiario.addEventListener('keyup', function (e) {
