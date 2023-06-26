@@ -17,25 +17,43 @@ $(document).ready(function() {
 
     $('#btn-buscar-cep').click(function() {   
         const cep = $('#cep').val();
-        const endpoint = `https://viacep.com.br/ws/${cep}/json`;          //o botao de busca terá a função de chamar a api, através do endpoint
+        const endpoint = `https://viacep.com.br/ws/${cep}/json`;          
         const botao = $(this);
-        $(botao).find('i').addClass('d-none');                           // qnd a lupa for clicada irá ser removida dando espaço ao carregamento
+        $(botao).find('i').addClass('d-none');                           
         $(botao).find('span').removeClass('d-none');
 
-        $.ajax(endpoint).done(function(resposta){
-            const logradouro = resposta.logradouro;
-            const bairro = resposta.bairro;                             //qnd ocorrer resposta no endpoint, irá aparecer no campo endereço com o padrao definido
-            const cidade = resposta.localidade;
-            const estado = resposta.uf;
-            const endereco = `${logradouro}, ${bairro} - ${cidade} - ${estado}`;
+        // $.ajax(endpoint).done(function(resposta){
+        //     const logradouro = resposta.logradouro;
+        //     const bairro = resposta.bairro;                             
+        //     const cidade = resposta.localidade;
+        //     const estado = resposta.uf;
+        //     const endereco = `${logradouro}, ${bairro} - ${cidade} - ${estado}`;
 
-            $('#endereco').val(endereco)
+        //     $('#endereco').val(endereco)
 
-            setTimeout(function(){
-                $(botao).find('i').removeClass('d-none');
-                $(botao).find('span').addClass('d-none');              //após finalizar a busca, o botao de carregamento irá sumir após 2segundos
-            }, 2000);
+        //     setTimeout(function(){
+        //         $(botao).find('i').removeClass('d-none');
+        //         $(botao).find('span').addClass('d-none');              
+        //     }, 2000);
 
+        // })
+        fetch(endpoint)
+        .then(function(resposta) {
+          return resposta.json();
+        })
+        .then(function(json){
+        const logradouro = json.logradouro;
+        const bairro = json.bairro;                             
+        const cidade = json.localidade;
+        const estado = json.uf;
+        const endereco = `${logradouro}, ${bairro} - ${cidade} - ${estado}`;
+        
+        $('#endereco').val(endereco);
+
+        setTimeout(function(){
+            $(botao).find('i').removeClass('d-none');
+            $(botao).find('span').addClass('d-none');              
+             }, 2000);
         })
     })
 })
