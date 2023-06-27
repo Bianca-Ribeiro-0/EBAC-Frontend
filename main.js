@@ -37,24 +37,34 @@ $(document).ready(function() {
         //     }, 2000);
 
         // })
-        fetch(endpoint)
-        .then(function(resposta) {
+        fetch(endpoint)              
+        .then(function(resposta) {   //pegando a resposta da api com fetchAPI        
           return resposta.json();
         })
         .then(function(json){
-        const logradouro = json.logradouro;
+        const logradouro = json.logradouro;            
         const bairro = json.bairro;                             
         const cidade = json.localidade;
         const estado = json.uf;
-        const endereco = `${logradouro}, ${bairro} - ${cidade} - ${estado}`;
-        
+        const endereco = `${logradouro}, ${bairro} - ${cidade} - ${estado}`;        
         $('#endereco').val(endereco);
+    })
+        .catch(function(erro) {
+            alert('Ocorreu um erro ao buscar o endereço, tente novamente mais tarde');  //caso tenha digitado errado, o catch pegara a função erro e irá alertar o usuario
+        })
+        .finally(function() {
+            setTimeout(function(){
+                $(botao).find('i').removeClass('d-none');
+                $(botao).find('span').addClass('d-none');               //após corrigir ou dar o ok no alert, o carregamento dará espaço à busca novamente após 2s
+                 }, 2000);
+            })
+        })
 
-        setTimeout(function(){
-            $(botao).find('i').removeClass('d-none');
-            $(botao).find('span').addClass('d-none');              
-             }, 2000);
+        $('#formulario-pedido').submit(function(evento) {
+            evento.preventDefault();                                 //previne que o usuario não envie o formulário vazio
+
+            if (('#nome').val().length ==0) {
+              throw new Error('Digite o nome');
+            }
         })
     })
-})
-
