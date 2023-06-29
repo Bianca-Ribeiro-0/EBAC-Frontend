@@ -1,24 +1,23 @@
-document.addEventListener('DOMContentLoaded', function() {
+function Pessoa(nome) {
+    this.nome = nome;
+    this.dizOi = function(){
+        console.log(this.nome + " diz Olá");
+    }
+}
 
-    const nameElement = document.querySelector('#name');
-    const usernameElement = document.querySelector('#username');
-    const avatarElement = document.querySelector('#avatar');
-    const reposElement = dpcument.querySelector('#repos');
-    const followersElement = document.querySelector('#followers');
-    const followingElement = document.querySelector('#following');
-    const linkElement = document.querySelector('#link');
+function Funcionario(nome, cargo, salario) {
+    this.cargo = cargo;
+    this.salario = salario;
 
-    fetch('https://api.github.com/users/bianca-ribeiro-0')
-    .then(function (res) {
-        return res.json();
-    })
-    .then(function(json){
-        nameElement.innerText = json.name;
-        usernameElement.innerText = json.login;
-        avatarElement.src = json.avatar_url;
-        followingElement.innerText = json.following;
-        followersElement.innerText = json.followers;
-        reposElement.innerText = json.public_repos;
-        linkElement.href = json.html_url;
-    })
-})
+    this.dizCargo = function() {
+        console.log(this.cargo);
+    }
+
+    Pessoa.call(this, nome);
+}
+
+const pessoa1 = new Pessoa("Maria");
+const funcionario1 = new Funcionario("Maria", "dev front-end", 5000);
+
+funcionario1.dizOi();
+funcionario1.dizCargo();
