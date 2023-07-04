@@ -28,7 +28,6 @@ alunos2.push({
     curso: 'backend'
 })
 
-
 //expressao find para encontrar paula no array de nomes
 const paula = alunos2.find(function (item) {
     return item.nome == 'Paula'
