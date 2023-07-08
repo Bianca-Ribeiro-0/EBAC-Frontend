@@ -15,7 +15,7 @@ redesSociais.forEach(function (item, indice) {
 //definindo um array para alunos
 var alunos = ['Gustavo', 'Julia', 'Paula', 'Wagner'];
 
-//imprimindo com o map o nome + curso de cada um
+//imprimindo com o map o nome + curso de cada um11
 var alunos2 = alunos.map(function (itemAtual) {
   return {
     nome: itemAtual,
