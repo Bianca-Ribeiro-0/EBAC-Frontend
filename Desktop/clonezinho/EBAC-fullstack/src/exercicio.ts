@@ -1,24 +1,13 @@
-class calcular {
-    n1: number;
-    n2; number: any;
-    
-    constructor(n1: number, n2: number) {
-        this.n1 = n1;
-        this.n2 = n2;
-    }
-    calcular(): number {
-        return this.n1 * this.n2;
-    }
+const Calcular = (n1: number, n2: number): number => {
+  return n1 * n2;
 }
 
-class Oi {
-    nome!: String;
-    
-    constructior(nome: string) {
-        this.nome = nome;
-    }
-
-    dizOla() {
-        return `${this.nome} diz Olá`;
-    }
+const Ola = (nome: string): string => {
+  return `${nome} diz Olá`;
 }
+
+const resultado = Calcular(10, 10);
+console.log(resultado);
+
+const saudacao = Ola("Bia");
+console.log(saudacao);
