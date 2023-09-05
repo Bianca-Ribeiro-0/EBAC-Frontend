@@ -1,33 +1,28 @@
 /// <reference types= "cypress" />
 
-describe('testes para uma lista de contatos', () => {
+describe('testes para a pag de candidatura', () => {
     beforeEach(() => {
-        cy.visit('https://agenda-contatos-react.vercel.app/')
+        cy.visit('https://ebac-jobs-e2e.vercel.app/')
     })
 
-    it('Deve renderizar 3 contatos na lista', ()=> {
-        cy.get('.contato').should('have.length', 3)
+    it('Deve renderizar levar o ux ate o form', () => {
+        cy.get('.Vaga_vagaLink__DeFkk').first().click()   
+        cy.get('input').should('have.length', 7)
+        cy.screenshot('tela-inscricao')
     })
-    it('Deve adicionar um novo contato', () => {
-        cy.get('[type="text"]').type('Bia')
-        cy.get('[type="email"]').type('bia@testetes.com')
-        cy.get('[type="tel"]').type('11943434564{enter}')
-        cy.get('.contato').should('have.length', 4)
-    })
-    it('Deve editar e salvar', () => {
-        //:nth-child(2) > .sc-gueYoa > .edit refere-se segundo botao da div .sc-g 
-        cy.get(':nth-child(2) > .sc-gueYoa > .edit').click()
-        cy.get('[type="text"]').clear().type('Amanda')
-        cy.get('[type="email"]').clear().type('Amanda@testetes.com')
-        cy.get('[type="tel"]').clear().type('1193456699{enter}')
-        cy.get('.alterar').click()
 
-        //Na div teve conter o texto alterado
-        cy.get(':nth-child(2) > .sc-dmqHEX > .sc-eDDNvR > :nth-child(1)').should('have.text', 'Amanda')
+    it('deve preencher form', () =>{
+        cy.get('input[name="nome-completo"]').type('bia ribeiro')
+        cy.get('input[name="email"]').type('bia@teste.com')
+        cy.get('input[name="telefone"]').type('11943459059')
+        cy.get('input[name="endereco"]').type('rua teste, bairo cypress, sao paulo - sp')
+        cy.get('#linux').check()
+        cy.get('select[name="escolaridade"').select('outros')
+        cy.get('.Aplicacao_button__tw2AE').click()
+        
+        cy.on('window:alert', (conteudo) =>{
+            expect(conteudo).contain('Obrigado pela candidatura!')
+        })
     })
-    it('Deve remover um contato', () => {
-        cy.get(':nth-child(4) > .sc-gueYoa > .delete').click()
-        //apos a adc de um anteriormente, voltara a ter 3 contatos
-        cy.get('.contato').should('have.length', 3)
-    })
+    cy.screenshot('tela-inscricao-preenchido')
 })
